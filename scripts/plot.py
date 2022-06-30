@@ -37,3 +37,15 @@ class Plot():
         sns.displot(data=df, x=column, color=color, kde=True, height=7, aspect=2)
         plt.title(f'Distribution of {column}', size=20, fontweight='bold')
         return plt.show()
+
+    def bivariate_plot(self,df,features, fields):
+        fig, axs = plt.subplots(10,3, figsize=(20,45))
+        for col in range(len(features)):  
+            for f in range(len(fields)):  
+                sns.histplot(df, 
+                            x=features[col]+"_"+fields[f], 
+                            hue="diagnosis", element="bars", 
+                            stat="count", 
+                            palette=["gold", "purple"],
+                            ax=axs[col][f])
+        
