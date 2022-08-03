@@ -10,7 +10,7 @@ This project aims at inferring the causation of breast cancer based on the chara
 
 git clone https://github.com/Stella-Mutacho/Machine-Learning-with-Causal_Inference.git
 
-cd causal_inference
+cd Machine-Learning-with-Causal_Inference
 
 pip install -r requirements.txt
 
