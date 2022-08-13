@@ -1,4 +1,6 @@
 [core]
-    remote = dvc-remote
+    remote = dvc_remote
 ['remote "dvc-remote"']
     url = gdrive://1bKKCdXbYqf_wBslmdiTNdGndCBB03EEU
+['remote "dvc_remote"']
+    url = ../gdrive:1bKKCdXbYqf_wBslmdiTNdGndCBB03EEU
