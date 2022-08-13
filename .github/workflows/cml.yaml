@@ -11,9 +11,10 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install -r requirements.txt
           pip install matplotlib
           pip install setuptools
-          pip install -r requirements.txt
+          
           #cml publish data/images/violin.png --md >> report.md
           #cml publish data/images/correlation_matrix.png --md >> report.md
           cml publish data/images/ground_truth.png --md >> report.md
