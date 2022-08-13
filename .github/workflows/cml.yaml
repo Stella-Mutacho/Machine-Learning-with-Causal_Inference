@@ -1,23 +1,21 @@
-name: model-causal-inference
-
-on: 
-  push:
-  pull_request:
-    branches:
-    - main
+name: cml
+on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest 
-    #container: docker://dvcorg/cml-py3:latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: setup
-        run: | 
-           pip install -r requirements.txt
-        #python scripts/script.py
-    #- name: run-tests
-        #python -m unittest tests.test_script
-        # Post reports as comments in GitHub PRs
-          
-          #cat results.txt >> report.md
-          #cml send-comment report.md
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: cml
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pip install matplotlib
+          pip install setuptools
+          pip install requirements.txt
+          #cml publish data/images/violin.png --md >> report.md
+          #cml publish data/images/correlation_matrix.png --md >> report.md
+          cml publish data/images/ground_truth.png --md >> report.md
+          #cml publish data/images/importance_original.png --md >> report.md
+          cml send-comment report.md
